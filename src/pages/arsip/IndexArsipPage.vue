@@ -17,6 +17,14 @@
         <div class="page-body">
             <div class="container-xl">
                 <div class="row">
+                    <div class="col-md-3">
+                        <div class="structur">
+
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="files"></div>
+                    </div>
                 </div>
             </div>
         </div>

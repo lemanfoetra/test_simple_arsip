@@ -4,6 +4,7 @@ import router from './routers/index'
 import store from './store/index'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import '../src/assets/css/custom.css';
 
 // IMPORT TABLER TEMPLATE
 import '@tabler/core/dist/css/tabler.css';

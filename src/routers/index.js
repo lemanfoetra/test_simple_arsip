@@ -9,6 +9,7 @@ import routeRoles from './routeRoles';
 import routeUsers from './routeUsers';
 import routeMasterApi from './routeMasterApi';
 import routeMasterMenu from './routeMasterMenus';
+import routeArsip from './routeArsip';
 
 let routes = [
     {
@@ -43,6 +44,7 @@ routes.push(routeRoles);
 routes.push(routeUsers);
 routes.push(routeMasterApi);
 routes.push(routeMasterMenu);
+routes.push(routeArsip);
 
 const router = createRouter({
     history: createWebHistory(),

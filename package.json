@@ -5,11 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "watch:sass": "node-sass src/assets/sass/main.scss src/assets/css/custom.css -w"
   },
   "dependencies": {
     "@tabler/core": "^1.0.0-beta20",
     "core-js": "^3.8.3",
+    "node-sass": "^9.0.0",
     "vue": "^3.2.13",
     "vue-router": "^4.4.0",
     "vue-sweetalert2": "^5.0.11",

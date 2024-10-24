@@ -164,7 +164,9 @@ export default {
 
         function classActiveById(menuId) {
             const listMenu = menus.value;
-            const path = routeOpened.value;
+            const fullpath = routeOpened.value;
+            const newpath = fullpath.split("/")[1];
+            const path = `/${newpath}`;
             let isActive = false;
 
             for (let index1 = 0; index1 < listMenu.length; index1++) {
@@ -190,7 +192,6 @@ export default {
                     }
                 }
             }
-
             if (isActive) {
                 return "nav-item active";
             }
