@@ -1,6 +1,9 @@
 import LoadingComponent from '@/components/LoadingComponent.vue';
 import LoadingError from '@/components/LoadingError.vue';
 import HeaderNav from '../components/layout/HeaderNav.vue';
+import BodyArsipPage from '@/pages/arsip/BodyArsipPage.vue';
+import FormAddFolder from '@/pages/arsip/FormAddFolder.vue';
+import FormAddFile from '@/pages/arsip/FormAddFile.vue';
 
 import { defineAsyncComponent } from 'vue';
 
@@ -23,6 +26,23 @@ export default {
         {
             path: '',
             component: IndexArsipPage,
+            children: [
+                {
+                    path: 'files/:folderId',
+                    component: BodyArsipPage,
+                    props: true,
+                },
+                {
+                    path: 'files/:folderId/create_folder',
+                    component: FormAddFolder,
+                    props: true,
+                },
+                {
+                    path: 'files/:folderId/create_file',
+                    component: FormAddFile,
+                    props: true,
+                },
+            ]
         },
     ],
 };

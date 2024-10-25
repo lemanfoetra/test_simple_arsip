@@ -1,11 +1,63 @@
 .structur {
-    background-color: blue;
-    min-height: 250px;
-    width: 100%;
-}
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  border-radius: 5px;
+  min-height: 250px;
+  margin-bottom: 20px;
+  background-color: white; }
+  .structur-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin-bottom: 5px; }
+  .structur__title {
+    display: flex; }
+    .structur__title-icon {
+      width: 25px;
+      color: #1a1919; }
+    .structur__title-text {
+      font-weight: 600;
+      color: black;
+      cursor: pointer; }
 
 .files {
-    background-color: green;
-    min-height: 250px;
-    width: 100%;
-}
+  min-height: 250px;
+  width: 100%; }
+  .files__header {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end; }
+    .files__header-item {
+      margin-right: 5px; }
+  .files__body__item {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+    display: flex; }
+  .files__body__icon {
+    margin-right: 5px;
+    display: flex; }
+
+.ml-0 {
+  margin-left: 0; }
+
+.ml-1 {
+  margin-left: 10px; }
+
+.ml-2 {
+  margin-left: 20px; }
+
+.ml-3 {
+  margin-left: 30px; }
+
+.folders-show {
+  display: block; }
+
+.folders-hide {
+  display: none; }
