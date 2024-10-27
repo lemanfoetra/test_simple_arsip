@@ -1,16 +1,21 @@
 <template>
     <div class="files">
         <div class="files__header">
-            <div class="files__header-item">
-                <router-link :to="`/arsip/files/${props.folderId}/create_file`" class="btn btn-primary btn-sm">
-                    Tambah File
-                </router-link>
+            <div class="files__header__title">
+                {{ activeFileName }}
             </div>
+            <div class="files__header__action">
+                <div class="files__header__action-item">
+                    <router-link :to="`/arsip/files/${props.folderId}/create_file`" class="btn btn-primary btn-sm">
+                        Tambah File
+                    </router-link>
+                </div>
 
-            <div class="files__header-item">
-                <router-link :to="`/arsip/files/${props.folderId}/create_folder`" class="btn btn-primary btn-sm">
-                    Tambah Folder
-                </router-link>
+                <div class="files__header__action-item">
+                    <router-link :to="`/arsip/files/${props.folderId}/create_folder`" class="btn btn-primary btn-sm">
+                        Tambah Folder
+                    </router-link>
+                </div>
             </div>
         </div>
         <div v-if="loadingFiles">
@@ -75,15 +80,16 @@ const props = defineProps(['folderId']);
 const store = useStore();
 const files = ref([]);
 const fileSelected = ref([]);
-// const tipeSelected = ref(0);
-
 const loadingFiles = ref(false);
+const activeFileName = ref('');
 
 watch(() => props.folderId, async (newValue) => {
+    activeFileName.value = store.getters['folder/activeNameFolder'];
     await loadListFiles(newValue);
 });
 
 onMounted(async () => {
+    activeFileName.value = store.getters['folder/activeNameFolder'];
     await loadListFiles(props.folderId);
 })
 

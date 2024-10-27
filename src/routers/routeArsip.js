@@ -26,6 +26,7 @@ export default {
         {
             path: '',
             component: IndexArsipPage,
+            props: true,
             children: [
                 {
                     path: 'files/:folderId',

@@ -7,6 +7,7 @@ import usersModule from './modules/users/users';
 import rolesModule from './modules/roles/roles';
 import masterApi from './modules/masterApi';
 import masterMenu from './modules/masterMenu';
+import storeFolder from './modules/folder/index'
 
 const store = createStore({
     modules: {
@@ -14,6 +15,7 @@ const store = createStore({
         roles: rolesModule,
         apis: masterApi,
         menus: masterMenu,
+        folder : storeFolder,
     },
     state() {
         return {
