@@ -83,6 +83,11 @@ watch(() => props.folderId, (newValue) => {
     setNameFolderActive();
 });
 
+// LOAD KETIA ADA PERUBAHAN LIST FOLDER
+watch(() => store.getters['folder/changeFolderList'], async () => {
+    await loadListFolder(0);
+});
+
 onMounted(async () => {
     await loadListFolder(0);
     setNameFolderActive();

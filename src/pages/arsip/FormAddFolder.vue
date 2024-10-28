@@ -63,6 +63,10 @@ async function submit() {
         const token = store.getters.getToken;
         const result = await apiInsertFolder(token, data);
 
+        const rand = Math.floor(Math.random() * 100000);
+        store.dispatch('folder/changeFolderList', rand);
+        loadingSubmit.value = false;
+
         if ((result.success || false) !== true) {
             Swal.fire({
                 toast: true,
@@ -90,7 +94,6 @@ async function submit() {
             loadingSubmit.value = false;
             router.push('/arsip/files/' + props.folderId);
         }
-        loadingSubmit.value = false;
     } catch (error) {
         if (error.message !== '') {
             Swal.fire({

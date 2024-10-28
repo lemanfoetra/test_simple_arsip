@@ -8,6 +8,7 @@ export default {
     state() {
         return {
             activeNameFolder: '',
+            changeFolderList: 0,
         }
     },
     actions: actions,

@@ -5,6 +5,13 @@
                 {{ activeFileName }}
             </div>
             <div class="files__header__action">
+
+                <div v-if="fileSelected.length > 0" class="files__header__action-item">
+                    <button @click="deleteFiles()" type="button" class="btn btn-danger btn-sm">
+                        Hapus
+                    </button>
+                </div>
+
                 <div class="files__header__action-item">
                     <router-link :to="`/arsip/files/${props.folderId}/create_file`" class="btn btn-primary btn-sm">
                         Tambah File
@@ -28,8 +35,7 @@
                 <div v-for="file in files" :key="file.key" class="files__body__item">
                     <div class="files__body__icon">
                         <div>
-                            <input type="checkbox" v-model="fileSelected" :value="`${file.tipe}#${file.id}`"
-                                class="form-check-input">
+                            <input type="checkbox" v-model="fileSelected" :value="file.id" class="form-check-input">
                         </div>
 
                         <span v-if="file.tipe === 1">
@@ -60,7 +66,9 @@
                         </router-link>
                     </template>
                     <template v-else>
-                        {{ file.name_display }}
+                        <a :href="file.url" target="_blank">
+                            {{ file.name_display }}
+                        </a>
                     </template>
                 </div>
             </div>
@@ -74,7 +82,7 @@
 <script setup>
 import { defineProps, onMounted, watch, ref } from 'vue'
 import { useStore } from 'vuex';
-import { apiListFile } from '../../hooks/api_file';
+import { apiListFile, apiDeleteFile } from '../../hooks/api_file';
 
 const props = defineProps(['folderId']);
 const store = useStore();
@@ -112,6 +120,7 @@ async function loadListFiles(parrent) {
                 'name_origin': data.name_origin,
                 'extension': data.extension,
                 'key': Math.floor(Math.random() * 100000),
+                'url': data.url,
             });
         });
         loadingFiles.value = false;
@@ -120,6 +129,31 @@ async function loadListFiles(parrent) {
         alert(error.message);
     }
 
+}
+
+
+async function deleteFiles() {
+    try {
+        if (!confirm('Yakin hapus?')) {
+            return;
+        }
+        const token = store.getters.getToken;
+        const parrent = props.folderId;
+        if (fileSelected.value.length > 0) {
+            for await (const id of fileSelected.value) {
+                await apiDeleteFile(token, parrent, id);
+
+                const index = files.value.findIndex(ex => ex.id === id);
+                files.value.splice(index, 1);
+            }
+            fileSelected.value = [];
+
+            const rand = Math.floor(Math.random() * 100000);
+            store.dispatch('folder/changeFolderList', rand);
+        }
+    } catch (error) {
+        alert(error.message)
+    }
 }
 
 </script>

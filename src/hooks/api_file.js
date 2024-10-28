@@ -50,13 +50,11 @@ export async function apiUploadFile(token, parrent, formData) {
 }
 
 
-export async function deleteUser(token, UserId) {
-    const url = baseUrl + 'user_management/' + UserId;
-
+export async function apiDeleteFile(token, parrent, id) {
+    const url = baseUrl + 'arsip/file/' + parrent + '/' + id;
     const response = await fetch(url, {
         method: 'DELETE',
         headers: {
-            'Content-Type': 'application/json',
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
